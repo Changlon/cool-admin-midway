@@ -1,6 +1,5 @@
-import { Provide } from '@midwayjs/decorator';
 import { CoolEvent, Event } from '@cool-midway/core';
-import { Scope, ScopeEnum } from '@midwayjs/core';
+import { EVENT_PLUGIN_READY } from '../../plugin/service/center';
 
 /**
  * 普通事件
@@ -16,5 +15,13 @@ export class DemoCommEvent {
   async demo(msg, a) {
     console.log(`comm当前进程的ID是: ${process.pid}`);
     console.log('comm收到消息', msg, a);
+  }
+
+  /**
+   * 插件已就绪
+   */
+  @Event(EVENT_PLUGIN_READY)
+  async pluginReady() {
+    // TODO 插件已就绪
   }
 }
