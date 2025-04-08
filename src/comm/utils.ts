@@ -1,6 +1,5 @@
 import { Inject, Provide } from '@midwayjs/decorator';
 import { Context } from '@midwayjs/koa';
-import * as ipdb from 'ipip-ipdb';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 
@@ -19,7 +18,8 @@ export class Utils {
     const req = ctx.req;
     return (
       req.headers['x-forwarded-for'] ||
-      req.socket.remoteAddress.replace('::ffff:', '')
+      req.socket.remoteAddress?.replace('::ffff:', '') ||
+      ''
     );
   }
 
